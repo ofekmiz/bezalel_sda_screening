@@ -1,10 +1,12 @@
 # bezalel_sda_screening
 
 How to use?
+-----------
 
 Download the folder and open the file index.html in any browser (preferred in Chrome).
 
 To change the data:
+------------------
 
 use data.csv as a template.
  
