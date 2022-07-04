@@ -61,12 +61,12 @@ div#leftSide img {
     max-height: 600px;
     left: 0px;
     top: 120px;
-    display: none;
     position: absolute;
 }
 
 div#rightSide {
     padding: 800px 10px;
+    padding-bottom: 100px;
 }
 
 div#leftSide {
@@ -138,6 +138,7 @@ div#leftSide {
     display: grid;
   }
   #movieInfo{
+    overflow: hidden;
     grid-column-start: 1;
     grid-row-start: 1;
     grid-row-end: 4;
