@@ -6,6 +6,6 @@ Download the folder and open the file index.html in any browser (preferred in Ch
 To change the data, use data.csv as a template. copy the csv string (as plain text) to the variable DATA in the file data.js, save the file and refresh the browser page.
 
 for example:
-const DATA = `
+const DATA = \`
 <your csv text here>
-`
+\`
