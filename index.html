@@ -29,10 +29,10 @@
 </div>
 
 <div id = "moviePage">
+<div id = "movieInfo">
+  <p id = "sbaTitle" class="titlepages">המחלקה לאומנויות המסך</p>
 
-  <p id = "sbaTitle">המחלקה לאומנויות המסך</p>
-
-  <p id ="authors"> טל דרמון, אוריאן מלמד </p>
+  <p id ="authors" class = "nomarginB"> טל דרמון, אוריאן מלמד </p>
   <h1 id ="movieTitle"> עומד לרדת גשם</h1>
   <p id ="type">אנימציה קלאסית </p>
 
@@ -40,20 +40,32 @@
   <p id ="screeningRoom"> הקרנה בחדר 517</p>
 
 
+</div>
+<div id = "screeningInfo">
 
+  <p class = "nomarginB">:הקרנה באולם 222 בקומה 8</p>
+  <h2 id = "screenGroupTitle"> מקבץ אנימציה</h2>
+  <div id = "screenGroup">
+
+  </div>
+
+</div>
 </div>
 </body>
 </html>
 
 <style>
-  #sbaTitle
+
+ 
+  .titlepages
   {
     font-size: 25;
   }
-  #authors
+  .nomarginB
   {
     font-size: 30;
     margin-bottom: 0;
+    text-align: right;
   }
   #movieTitle
   {
@@ -74,4 +86,24 @@
     font-size: 50;
     
   }
+
+  #moviePage
+  {
+    display: grid;
+  }
+  #movieInfo{
+    grid-column-start: 3;
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+
+  #screeningInfo{
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  #screenGroupTitle{
+    margin-top: 0;
+  }
+
 </style>
