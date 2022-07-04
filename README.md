@@ -16,10 +16,8 @@ save the file and refresh the browser page.
 
 for example:
 ```
-const DATA = \`
-
-your csv text here
-
-\`
+const DATA = `
+<your csv text here>
+`;
 ```
 
