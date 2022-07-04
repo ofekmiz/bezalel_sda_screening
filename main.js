@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //mark selected
     document.querySelector(`#movieList .movie[data-number="0"]`).classList.add("selected");
     var scrollIndex = 0;
+    scrollToSelection();
 
     window.addEventListener("wheel", event => {
         const delta = Math.sign(event.deltaY);
@@ -46,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
         var oldSelected = document.querySelector(".movie.selected");
         oldSelected.classList.remove("selected");
         var selected = document.querySelector(`#movieList .movie[data-number="${scrollIndex}"]`);
-        selected.scrollIntoView(false);
+        selected.scrollIntoView(true);
+        mainContainer.scrollBy(0,-100);
         selected.classList.add("selected");
     }
 
