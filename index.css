@@ -39,13 +39,61 @@
 }
 
 body {
+    overflow: hidden;
     font-family: 'Abraham';
+    letter-spacing: 0.15em;
     font-weight: normal;
     background-color: black;
     color: white;
     text-align: right;
+    direction: rtl;
 }
+
+div#mainPage {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh;
+    overflow: auto;
+}
+
+div#leftSide img {
+    max-height: 600px;
+    left: 0px;
+    top: 120px;
+    display: none;
+    position: absolute;
+}
+
+div#rightSide {
+    padding: 20px 10px;
+    padding-bottom: 100px;
+}
+
+div#leftSide {
+    justify-content: center;
+    display: flex;
+    align-content: space-around;
+    align-items: center;
+}
+
+#mainPage::-webkit-scrollbar {
+    display: none;
+  }
 
 #sbaHeder {
     font-weight: normal;
+}
+
+.movie, #sbaHeder {
+    padding-right: 20px;
+}
+
+.movie.selected {
+    color: black;
+    background-color: #FF00F7;
+}
+
+/* Movie Page */
+#moviePage{
+    display: none;
 }
