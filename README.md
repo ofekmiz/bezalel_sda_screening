@@ -10,7 +10,7 @@ To change the data:
 
 use data.csv as a template.
  
-copy the csv string (as plain text) to the variable DATA between the "`" parentheses in the file data.js.
+copy the csv string (as plain text) to the variable DATA between the ` parentheses in the file data.js.
 
 save the file and refresh the browser page.
 
