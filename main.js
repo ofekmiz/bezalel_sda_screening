@@ -155,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
         var groups = getScreeningGroups();
         var indexes = [];
         for (const group of groups) {
-            console.log(group)
             if (group.groupName == groupName) {
                 indexes = group.indexes;
                 break;
