@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             scrollIndex = scrollIndex <= 0 ? 0 : scrollIndex - 1;
         }
         scrollToSelection();
+        updateImage();
     });
 
     mainContainer.addEventListener('scroll', function (e) {
@@ -54,8 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
             mainContainer.scrollBy(0, -100);
         } else {
             selected.scrollIntoView(true);
-            mainContainer.scrollBy(0, threshold -110);
+            mainContainer.scrollBy(0, threshold - 110);
         }
+    }
+
+    function updateImage() {
+        var imageMovie = document.getElementById("imageMovie");
+        var imageName = dataJson[scrollIndex].imageName;
+        imageMovie.setAttribute("src", "resources/images/" + imageName);
     }
 
     //Click selected
@@ -79,14 +86,42 @@ document.addEventListener("DOMContentLoaded", function () {
         var movieType = document.getElementById("type");
         var movieAuthors = document.getElementById("authors");
         var movieScreeningRoom = document.getElementById("screeningRoom");
+        var screenGroupTitle = document.getElementById("screenGroupTitle");
         var screenGroupList = document.getElementById("screenGroup");
 
         movieTitle.innerHTML = dataJson[scrollIndex].hebMovieName;
-        movieType.innerHTML = dataJson[scrollIndex].type +" "+dataJson[scrollIndex].tecnique;
+        movieType.innerHTML = dataJson[scrollIndex].type + " " + dataJson[scrollIndex].tecnique;
         movieAuthors.innerHTML = dataJson[scrollIndex].authors;
         movieScreeningRoom.innerHTML = "הקרנה " + dataJson[scrollIndex].screenRoom;
-        
+        screenGroupTitle.innerHTML = dataJson[scrollIndex].group;
+    }
 
+    /** return array of {groupName:"Name",indexes:[1,3,5,...]}
+     * with the indexes in dataJson of all the movies of the same group
+    **/
+    function getScreeningGroups() {
+        var grps = [{ groupName: dataJson[0].group, indexes: [] }];
+        var isInGrp = 0;
+        for (var i = 0; i < dataJson.length; i++) {
+            var mov = dataJson[i].group;
+            isInGrp = 0;
+
+            for (var j = 0; j < grps.length; j++) {
+                if (grps[j].groupName == mov) {
+                    if (grps[j].indexes.includes(i) == false) {
+                        grps[j].indexes.push(i);
+                        isInGrp = 1;
+                    }
+                } else {
+                    if (j == grps.length - 1) {
+                        var newitem = { groupName: mov, indexes: [] };
+                        newitem.indexes.push(i);
+
+                        grps.push(newitem);
+                    }
+                }
+            }
+        }
     }
 });
 
