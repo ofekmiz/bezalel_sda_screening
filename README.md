@@ -8,10 +8,10 @@ copy the csv string (as plain text) to the variable DATA between the "`" parenth
 save the file and refresh the browser page.
 
 for example:
-<
+
 const DATA = \`
 
 your csv text here
 
 \`
->
+
