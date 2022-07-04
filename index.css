@@ -1,5 +1,51 @@
-body{
-    background-color: black;
-    color: white;
+@font-face {
+    font-family: "Abraham";
+    src: url("Abraham-Black.otf") format("truetype");
+    font-weight: bolder;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: "Abraham";
+    src: url("resources/fonts/Abraham-Bold.otf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Abraham";
+    src: url("resources/fonts/Abraham-Light.otf") format("truetype");
+    font-weight: light;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Abraham";
+    src: url("resources/fonts/Abraham-Regular.otf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Abraham";
+    src: url("resources/fonts/Abraham-Thin.otf") format("truetype");
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Abraham-Medium";
+    src: url("resources/fonts/Abraham-Medium.otf") format("truetype");
+}
+
+body {
+    font-family: 'Abraham';
+    font-weight: normal;
+    background-color: black;
+    color: white;
+    text-align: right;
+}
+
+#sbaHeder {
+    font-weight: normal;
+}
