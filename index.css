@@ -78,7 +78,7 @@ div#leftSide {
 
 #mainPage::-webkit-scrollbar {
     display: none;
-  }
+}
 
 #sbaHeder {
     font-weight: normal;
@@ -93,7 +93,60 @@ div#leftSide {
     background-color: #FF00F7;
 }
 
-/* Movie Page */
-#moviePage{
-    display: none;
+/* ------------------------- Movie Page --------------------------------- */
+#moviePage {
+    position: absolute;
+    top: 0;
+    background-color: black;
+    width: 100%;
+    height: 100%;
 }
+
+.titlepages
+  {
+    font-size: 25;
+  }
+  .nomarginB
+  {
+    font-size: 30;
+    margin-bottom: 0;
+    text-align: right;
+  }
+  #movieTitle
+  {
+    font-size: 48;
+    color: #C300D6;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  #type
+  {
+    font-size: 30;
+    margin-top: 0;
+  }
+
+  #screeningRoom
+  {
+    font-size: 50;
+    
+  }
+
+  #moviePage
+  {
+    display: grid;
+  }
+  #movieInfo{
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+
+  #screeningInfo{
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  #screenGroupTitle{
+    margin-top: 0;
+  }

@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var mainContainer = document.getElementById("mainPage");
     var moviePage = document.getElementById("moviePage");
 
+    //hide moviePage
+    moviePage.style.display = "none";
+
     //append movies to list
     for (var i = 0; i < dataJson.length; i++) {
         let authors = dataJson[i].authors;
@@ -53,10 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function clickAnywhere() {
         
         if(moviePageClosed){
-            x.style.display = "block";
+            moviePage.style.display = "grid";
             moviePageClosed = false;
         }else{
-            x.style.display = "none";
+            moviePage.style.display = "none";
             moviePageClosed = true;
         }     
     }
