@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var movieScreeningRoom = document.getElementById("screeningRoom");
         var screenGroupTitle = document.getElementById("screenGroupTitle");
         var screenGroupList = document.getElementById("screenGroup");
+        var screenInfoContainer = document.getElementById("screeningInfo");
         screenGroupList.innerHTML = "";
 
         movieTitle.innerHTML = dataJson[scrollIndex].hebMovieName;
@@ -96,8 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
         movieScreeningRoom.innerHTML = "הקרנה " + dataJson[scrollIndex].screenRoom;
         screenGroupTitle.innerHTML = dataJson[scrollIndex].group;
 
+        if(!dataJson[scrollIndex].group || dataJson[scrollIndex].group == ""){
+            screenInfoContainer.style.display = "none";
+        }else{
+            screenInfoContainer.style.display = "block";
+        }
+
         //screening group
-        var screenGroup = getOrderedScreeningGroup(dataJson[scrollIndex].group)
+        var screenGroup = getOrderedScreeningGroup(dataJson[scrollIndex].group);
         console.log("screenGroup", screenGroup);
         for (const movie of screenGroup) {
             var startTimes = movie.startTime.join(" | ");
