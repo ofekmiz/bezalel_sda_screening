@@ -106,52 +106,64 @@ img#imageMovie {
     overflow: hidden;
 }
 
-.titlepages
-  {
+.titlepages {
     font-size: 25;
-  }
-  .nomarginB
-  {
+}
+
+.nomarginB {
     font-size: 30;
     margin-bottom: 0;
     text-align: right;
-  }
-  #movieTitle
-  {
+}
+
+#movieTitle {
     font-size: 48;
     color: #C300D6;
     line-height: 1;
     margin-top: 0;
     margin-bottom: 0;
-  }
-  #type
-  {
+}
+
+#type {
     font-size: 30;
     margin-top: 0;
-  }
+}
 
-  #screeningRoom
-  {
+#screeningRoom {
     font-size: 50;
-    
-  }
 
-  #moviePage
-  {
+}
+
+#moviePage {
     display: grid;
-  }
-  #movieInfo{
+}
+
+#movieInfo {
     overflow: hidden;
     grid-column-start: 1;
     grid-row-start: 1;
     grid-row-end: 4;
-  }
+}
 
-  #screeningInfo{
+#screeningInfo {
     grid-column-start: 2;
     grid-row-start: 2;
     grid-row-end: 3;
-  }
-  #screenGroupTitle{
+}
+
+#screenGroupTitle {
     margin-top: 0;
-  }
+}
+
+.movieScreenTime {
+    margin-top: 6px;
+}
+
+.movieScreenTime.selected {
+    font-weight: bold;
+    color: #C300D6;
+}
+.movieScreenTime .time{
+    width: 120px;
+    display: inline-block;
+}

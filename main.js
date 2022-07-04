@@ -88,12 +88,27 @@ document.addEventListener("DOMContentLoaded", function () {
         var movieScreeningRoom = document.getElementById("screeningRoom");
         var screenGroupTitle = document.getElementById("screenGroupTitle");
         var screenGroupList = document.getElementById("screenGroup");
+        screenGroupList.innerHTML = "";
 
         movieTitle.innerHTML = dataJson[scrollIndex].hebMovieName;
         movieType.innerHTML = dataJson[scrollIndex].type + " " + dataJson[scrollIndex].tecnique;
         movieAuthors.innerHTML = dataJson[scrollIndex].authors;
         movieScreeningRoom.innerHTML = "הקרנה " + dataJson[scrollIndex].screenRoom;
         screenGroupTitle.innerHTML = dataJson[scrollIndex].group;
+
+        //screening group
+        var screenGroup = getOrderedScreeningGroup(dataJson[scrollIndex].group)
+        console.log("screenGroup", screenGroup);
+        for (const movie of screenGroup) {
+            var startTimes = movie.startTime.join(" | ");
+            var movieObj = document.createElement('div');
+            movieObj.classList.add("movieScreenTime");
+            if (dataJson[scrollIndex].order == movie.order) {
+                movieObj.classList.add("selected");
+            }
+            movieObj.innerHTML = `<span class="time">${startTimes}</span>${movie.authors} | ${movie.hebMovieName}`
+            screenGroupList.append(movieObj);
+        }
     }
 
     /** return array of {groupName:"Name",indexes:[1,3,5,...]}
@@ -122,6 +137,59 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         }
+        return grps;
+    }
+
+
+    // returns ordered screening group with movies startTime
+    function getOrderedScreeningGroup(groupName) {
+        var orderedGroupMovies = [];
+        //get group indexes
+        var groups = getScreeningGroups();
+        var indexes = [];
+        for (const group of groups) {
+            console.log(group)
+            if (group.groupName == groupName) {
+                indexes = group.indexes;
+                break;
+            }
+        }
+
+        //collect movies in group
+        var times = groupName.split("|").slice(0, -1);
+        for (const i of indexes) {
+            dataJson[i].startTime = times;
+            var newTimes = [];
+            for (var j = 0; j < times.length; j++) {
+                startHour = times[j].toString().split(":")[0];
+                startMinutes = parseInt(times[j].toString().split(":")[1]);
+                movieLenMinutes = parseInt(dataJson[i].length.toString().split(":")[0]);
+                var startTime = startHour + ":" + zeroPadding(startMinutes + movieLenMinutes);
+                newTimes.push(startTime.replace(/\s/g, '')); // remove spaces
+            }
+            times = newTimes;
+            orderedGroupMovies.push(dataJson[i]);
+        }
+
+        //sort by order
+        orderedGroupMovies.sort(function (first, second) {
+            if (first.order > second.order) {
+                return 1;
+            }
+            if (first.order < second.order) {
+                return -1;
+            }
+            return 0;
+        });
+
+        return orderedGroupMovies;
+    }
+
+    function zeroPadding(num) {
+        if (num < 10) {
+            num = "0" + num.toString();
+        }
+        return num;
     }
 });
 
