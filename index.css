@@ -39,7 +39,7 @@
 }
 
 body {
-    /* cursor: none; */
+    cursor: none;
     overflow: hidden;
     font-family: 'Abraham';
     letter-spacing: 0.1em;
