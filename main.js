@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var movieListContainer = document.getElementById("movieList");
     var mainContainer = document.getElementById("mainPage");
     var moviePage = document.getElementById("moviePage");
+    var scrollIndex = 0;
 
     //hide moviePage
     moviePage.style.display = "none";
@@ -24,9 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
         movieListContainer.appendChild(movie);
     }
 
-    //mark selected
+    //Mark selected
     document.querySelector(`#movieList .movie[data-number="0"]`).classList.add("selected");
-    var scrollIndex = 0;
     scrollToSelection();
 
     window.addEventListener("wheel", event => {
@@ -47,28 +47,46 @@ document.addEventListener("DOMContentLoaded", function () {
         var oldSelected = document.querySelector(".movie.selected");
         oldSelected.classList.remove("selected");
         var selected = document.querySelector(`#movieList .movie[data-number="${scrollIndex}"]`);
-        selected.scrollIntoView(true);
-        mainContainer.scrollBy(0,-100);
         selected.classList.add("selected");
+        var threshold = Math.floor(dataJson.length / 3)
+        if (scrollIndex < threshold) {
+            selected.scrollIntoView(true);
+            mainContainer.scrollBy(0, -100);
+        } else {
+            selected.scrollIntoView(true);
+            mainContainer.scrollBy(0, threshold -110);
+        }
     }
 
     //Click selected
-    document.body.addEventListener('click', clickAnywhere, true); 
-    
+    document.body.addEventListener('click', clickAnywhere, true);
+
     var moviePageClosed = true;
-    function clickAnywhere() {   
-        if(moviePageClosed){
+    function clickAnywhere() {
+        if (moviePageClosed) {
             updateMoviePage();
             moviePage.style.display = "grid";
             moviePageClosed = false;
-        }else{
+        } else {
             moviePage.style.display = "none";
             moviePageClosed = true;
-        }     
+        }
     }
 
-    function updateMoviePage(){
+
+    function updateMoviePage() {
+        var movieTitle = document.getElementById("movieTitle");
+        var movieType = document.getElementById("type");
+        var movieAuthors = document.getElementById("authors");
+        var movieScreeningRoom = document.getElementById("screeningRoom");
+        var screenGroupList = document.getElementById("screenGroup");
+
+        movieTitle.innerHTML = dataJson[scrollIndex].hebMovieName;
+        movieType.innerHTML = dataJson[scrollIndex].type +" "+dataJson[scrollIndex].tecnique;
+        movieAuthors.innerHTML = dataJson[scrollIndex].authors;
+        movieScreeningRoom.innerHTML = "הקרנה " + dataJson[scrollIndex].screenRoom;
         
+
     }
 });
 
