@@ -39,9 +39,10 @@
 }
 
 body {
+    /* cursor: none; */
     overflow: hidden;
     font-family: 'Abraham';
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     font-weight: normal;
     background-color: black;
     color: white;
@@ -96,10 +97,11 @@ div#leftSide {
 /* ------------------------- Movie Page --------------------------------- */
 #moviePage {
     position: absolute;
-    top: 0;
+    top: 0px;
     background-color: black;
-    width: 100%;
+    width: calc(100% - 40px);
     height: 100%;
+    padding: 20px;
 }
 
 .titlepages

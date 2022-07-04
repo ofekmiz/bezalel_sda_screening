@@ -1,6 +1,7 @@
+var dataJson = CSVJSON.csv2json(DATA);
+console.log("dataJson", dataJson);
+
 document.addEventListener("DOMContentLoaded", function () {
-    var dataJson = CSVJSON.csv2json(DATA);
-    console.log("dataJson", dataJson);
 
     var movieListContainer = document.getElementById("movieList");
     var mainContainer = document.getElementById("mainPage");
@@ -53,15 +54,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.addEventListener('click', clickAnywhere, true); 
     
     var moviePageClosed = true;
-    function clickAnywhere() {
-        
+    function clickAnywhere() {   
         if(moviePageClosed){
+            updateMoviePage();
             moviePage.style.display = "grid";
             moviePageClosed = false;
         }else{
             moviePage.style.display = "none";
             moviePageClosed = true;
         }     
+    }
+
+    function updateMoviePage(){
+        
     }
 });
 
