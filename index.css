@@ -76,6 +76,8 @@ div#leftSide {
 
 img#imageMovie {
     width: 100%;
+    max-height: 500px;
+    max-width: fit-content;
 }
 
 img#imageMovie2 {
@@ -198,6 +200,6 @@ img.sbaHeder {
     text-align: center;
 }
 
-div#screenGroup{
+div#screenGroup {
     font-size: 19px;
 }
