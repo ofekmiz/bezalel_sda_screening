@@ -1,5 +1,9 @@
 # bezalel_sda_screening
 
+Install
+-----------
+https://github.com/ofekmiz/bezalel_sda_screening
+
 How to use?
 -----------
 
