@@ -1,3 +1,15 @@
+//---------------OPTIONS---------------
+// keyboard keys: https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values#modifier_keys
+const DOWN_KEYS = ["ArrowDown", "s", "Decimal"];
+const UP_KEYS = ["ArrowUp", "w", "3"];
+const ENTER_KEYS = ["Enter", " "];
+const autoEnterMoviePage = true;
+const autoCloseMoviePage = true;
+const autoEnterTime = 2000; //miliseconds
+const autoCloseTime = 2000; //miliseconds
+const timeBeforeMarkerAnimation = 1000 //miliseconds
+//-------------------------------------
+
 var dataJson = CSVJSON.csv2json(DATA);
 console.log("dataJson", dataJson);
 
@@ -20,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         movie.classList.add("movie");
         movie.setAttribute("data-number", i);
         movie.innerHTML = /*html*/ `
-        <b class="autors">${authors}</b> | <span class="movieName">${movieName}</span>
+        <b class="autors">${authors}</b>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="movieName">${movieName}</span>
     `
         movieListContainer.appendChild(movie);
     }
@@ -29,12 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(`#movieList .movie[data-number="0"]`).classList.add("selected");
     scrollToSelection();
 
+    //Wheel control
     window.addEventListener("wheel", event => {
         const delta = Math.sign(event.deltaY);
         if (delta == 1) { //scroll Down
-            scrollIndex = scrollIndex >= dataJson.length - 1 ? dataJson.length - 1 : scrollIndex + 1;
+            increaseScrollIndex();
         } else if (delta == -1) {//scroll Up
-            scrollIndex = scrollIndex <= 0 ? 0 : scrollIndex - 1;
+            decreaseScrollIndex();
         }
         scrollToSelection();
         updateImage();
@@ -44,6 +57,24 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollToSelection();
     }, false);
 
+    //Keyboard control
+    window.addEventListener("keydown", event => {
+        if (UP_KEYS.includes(event.key)) {
+            decreaseScrollIndex();
+            scrollToSelection();
+            updateImage();
+        }
+        if (DOWN_KEYS.includes(event.key)) {
+            increaseScrollIndex();
+            scrollToSelection();
+            updateImage();
+        }
+        if (ENTER_KEYS.includes(event.key)) {
+            toggleMoviePage();
+        }
+
+    });
+
     function scrollToSelection() {
         var oldSelected = document.querySelector(".movie.selected");
         oldSelected.classList.remove("selected");
@@ -52,10 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
         var threshold = Math.floor(dataJson.length / 3)
         if (scrollIndex < threshold) {
             selected.scrollIntoView(true);
-            mainContainer.scrollBy(0, -100);
+            mainContainer.scrollBy(0, -120);
         } else {
             selected.scrollIntoView(true);
-            mainContainer.scrollBy(0, threshold - 110);
+            mainContainer.scrollBy(0, threshold - 130);
         }
     }
 
@@ -65,11 +96,19 @@ document.addEventListener("DOMContentLoaded", function () {
         imageMovie.setAttribute("src", "resources/images/" + imageName);
     }
 
+    function increaseScrollIndex() {
+        scrollIndex = scrollIndex >= dataJson.length - 1 ? dataJson.length - 1 : scrollIndex + 1;
+    }
+
+    function decreaseScrollIndex() {
+        scrollIndex = scrollIndex <= 0 ? 0 : scrollIndex - 1;
+    }
+
     //Click selected
-    document.body.addEventListener('click', clickAnywhere, true);
+    document.body.addEventListener('click', toggleMoviePage, true);
 
     var moviePageClosed = true;
-    function clickAnywhere() {
+    function toggleMoviePage() {
         if (moviePageClosed) {
             updateMoviePage();
             moviePage.style.display = "grid";
@@ -94,12 +133,12 @@ document.addEventListener("DOMContentLoaded", function () {
         movieTitle.innerHTML = dataJson[scrollIndex].hebMovieName;
         movieType.innerHTML = dataJson[scrollIndex].type + " " + dataJson[scrollIndex].tecnique;
         movieAuthors.innerHTML = dataJson[scrollIndex].authors;
-        movieScreeningRoom.innerHTML = "הקרנה " + dataJson[scrollIndex].screenRoom;
+        movieScreeningRoom.innerHTML = dataJson[scrollIndex].screenRoom;
         screenGroupTitle.innerHTML = dataJson[scrollIndex].group;
 
-        if(!dataJson[scrollIndex].group || dataJson[scrollIndex].group == ""){
+        if (!dataJson[scrollIndex].group || dataJson[scrollIndex].group == "") {
             screenInfoContainer.style.display = "none";
-        }else{
+        } else {
             screenInfoContainer.style.display = "block";
         }
 
@@ -116,6 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
             movieObj.innerHTML = `<span class="time">${startTimes}</span>${movie.authors} | ${movie.hebMovieName}`
             screenGroupList.append(movieObj);
         }
+
+        //update image
+        var imageMovie = document.getElementById("imageMovie2");
+        var imageName = dataJson[scrollIndex].imageName;
+        imageMovie.setAttribute("src", "resources/images/" + imageName);
     }
 
     /** return array of {groupName:"Name",indexes:[1,3,5,...]}
