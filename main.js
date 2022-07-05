@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //Mark selected
     document.querySelector(`#movieList .movie[data-number="0"]`).classList.add("selected");
     scrollToSelection();
+    updateImage();
 
     //Wheel control
     window.addEventListener("wheel", event => {
