@@ -38,6 +38,21 @@
     src: url("resources/fonts/Abraham-Medium.otf") format("truetype");
 }
 
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
 body {
     cursor: none;
     overflow: hidden;
@@ -114,8 +129,8 @@ img.sbaHeder {
     right: 0px;
     background-color: black;
     padding: 20px 38px;
-    -webkit-box-shadow: 5px 5px 32px 2px #000000;
-    box-shadow: 5px 5px 32px 2px #000000;
+    /* -webkit-box-shadow: 5px 5px 32px 2px #000000;
+    box-shadow: 5px 5px 32px 2px #000000; */
 }
 
 /* ------------------------- Movie Page --------------------------------- */
