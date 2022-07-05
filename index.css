@@ -210,7 +210,8 @@ img.sbaHeder {
 }
 
 .movieScreenTime .time {
-    width: 120px;
+    width: 110px;
+    margin-left: 15px;
     display: inline-block;
     text-align: center;
 }

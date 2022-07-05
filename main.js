@@ -147,13 +147,13 @@ document.addEventListener("DOMContentLoaded", function () {
         var screenGroup = getOrderedScreeningGroup(dataJson[scrollIndex].group);
         console.log("screenGroup", screenGroup);
         for (const movie of screenGroup) {
-            var startTimes = movie.startTime.join(" | ");
+            var startTimes = movie.startTime.join("&nbsp;|&nbsp;");
             var movieObj = document.createElement('div');
             movieObj.classList.add("movieScreenTime");
             if (dataJson[scrollIndex].order == movie.order) {
                 movieObj.classList.add("selected");
             }
-            movieObj.innerHTML = `<span class="time">${startTimes}</span>${movie.authors} | ${movie.hebMovieName}`
+            movieObj.innerHTML = `<span class="time">${startTimes}</span>${movie.authors} &nbsp;|&nbsp; ${movie.hebMovieName}`
             screenGroupList.append(movieObj);
         }
 
