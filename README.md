@@ -1,5 +1,5 @@
 # bezalel_sda_screening
-Page
+Github Page
 -----------
 https://ofekmiz.github.io/bezalel_sda_screening/
 
