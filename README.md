@@ -1,4 +1,7 @@
 # bezalel_sda_screening
+Github Page
+-----------
+https://ofekmiz.github.io/bezalel_sda_screening/
 
 Install
 -----------
