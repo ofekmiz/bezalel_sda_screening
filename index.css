@@ -39,7 +39,7 @@
 }
 
 /* ------------------------- MOBILE ------------------------- */
-@media (max-width: 767px) {
+@media all and (orientation:portrait) {
   img.sbaHeder {
     position: fixed;
     top: 0px;
@@ -150,7 +150,7 @@
   }
 }
 /* ------------------------- Desktop ------------------------- */
-@media (min-width: 768px) {
+@media all and (orientation:landscape) {
   img.sbaHeder {
     position: fixed;
     top: 0px;
