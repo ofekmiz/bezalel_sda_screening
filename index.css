@@ -1,140 +1,185 @@
 @font-face {
-    font-family: "Abraham";
-    src: url("Abraham-Black.otf") format("truetype");
-    font-weight: bolder;
-    font-style: normal;
+  font-family: "Abraham";
+  src: url("Abraham-Black.otf") format("truetype");
+  font-weight: bolder;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Abraham";
-    src: url("resources/fonts/Abraham-Bold.otf") format("truetype");
-    font-weight: bold;
-    font-style: normal;
+  font-family: "Abraham";
+  src: url("resources/fonts/Abraham-Bold.otf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Abraham";
-    src: url("resources/fonts/Abraham-Light.otf") format("truetype");
-    font-weight: light;
-    font-style: normal;
+  font-family: "Abraham";
+  src: url("resources/fonts/Abraham-Light.otf") format("truetype");
+  font-weight: light;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Abraham";
-    src: url("resources/fonts/Abraham-Regular.otf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Abraham";
+  src: url("resources/fonts/Abraham-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Abraham";
-    src: url("resources/fonts/Abraham-Thin.otf") format("truetype");
-    font-weight: lighter;
-    font-style: normal;
+  font-family: "Abraham";
+  src: url("resources/fonts/Abraham-Thin.otf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Abraham-Medium";
-    src: url("resources/fonts/Abraham-Medium.otf") format("truetype");
+  font-family: "Abraham-Medium";
+  src: url("resources/fonts/Abraham-Medium.otf") format("truetype");
 }
 
-.noselect {
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    -khtml-user-select: none;
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Old versions of Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-}
-
-body {
-    cursor: none;
-    overflow: hidden;
-    font-family: 'Abraham';
-    letter-spacing: 0;
-    font-weight: normal;
+/* ------------------------- MOBILE ------------------------- */
+@media (max-width: 767px) {
+  img.sbaHeder {
+    position: fixed;
+    top: 0px;
+    width: calc(100% - 50px);
+    right: 0px;
     background-color: black;
-    color: white;
-    text-align: right;
-    direction: rtl;
-}
-
-div#mainPage {
+    padding: 15px 25px;
+  }
+  div#rightSide {
+    padding: 800px 10px;
+    padding-bottom: 500px;
+  }
+  img#imageMovie {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    position: fixed;
+    bottom: 10;
+    right: 0;
+    background: black;
+  }
+  div#movieInfo > p , div#movieInfo > h1{
+    background-color:#00000060;
+    padding-right: 10px;
+  }
+  div#mainPage {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 100%;
     height: 100vh;
     overflow: auto;
-}
-
-div#rightSide {
-    padding: 800px 10px;
-    padding-bottom: 130px;
-}
-
-div#leftSide {
-    justify-content: center;
-    align-content: space-around;
-    align-items: center;
+  }
+  div#credits {
+    margin: 0;
+    padding: 10px;
     position: fixed;
-    left: 0;
-    width: calc(50% - 100px);
-    padding: 50px;
-    height: calc(100% - 100px);
-    display: flex;
-}
-
-img#imageMovie {
+    bottom: 0;
+    background-color: black;
+    font-size: 12px;
     width: 100%;
-    max-height: 500px;
-    max-width: fit-content;
-}
+    right: 0;
+  }
+  #moviePage {
+    position: fixed;
+    top: 0px;
+    background-color: black;
+    width: 100%;
+    right: 0;
+    height: 100%;
+    padding: 30px 0px;
+    overflow: hidden;
+    grid-template-rows: 300px auto;
+  }
+  #screenGroupSpace,
+  #screenGroupTitle {
+    font-size: 20px;
+    margin: 10px 10px;
+  }
+  div#screenGroup {
+    font-size: 16px;
+  }
+  #movieInfo {
+    overflow: hidden;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    margin-top: 65px;
+    position: relative;
+  }
 
-img#imageMovie2 {
-    height: 200px;
-}
+  #screeningInfo {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  .titlepages {
+    font-size: 14;
+  }
 
-#mainPage::-webkit-scrollbar {
-    display: none;
-}
+  .nomarginB {
+    font-size: 14;
+    margin-bottom: 0;
+    text-align: right;
+  }
 
-.movie {
-    padding-right: 20px;
-}
+  #movieTitle {
+    font-size: 32;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
-.movie.selected {
-    color: black;
-    background-color: #FF00F7;
-}
+  #type {
+    font-size: 16;
+    margin: 0;
+  }
 
-.movie {
-    font-size: 18px;
-    margin-top: 15px;
+  #screeningRoom {
+    padding-top: 10px;
+    font-size: 21;
+    margin: 0;
+  }
+  img#imageMovie2 {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 }
-
-div#credits {
-    margin: 10px 28px;
-    margin-bottom: 25px
-}
-
-img.sbaHeder {
+/* ------------------------- Desktop ------------------------- */
+@media (min-width: 768px) {
+  img.sbaHeder {
     position: fixed;
     top: 0px;
     width: 500px;
     right: 0px;
     background-color: black;
     padding: 20px 38px;
-    /* -webkit-box-shadow: 5px 5px 32px 2px #000000;
-    box-shadow: 5px 5px 32px 2px #000000; */
-}
+  }
+  div#rightSide {
+    padding: 800px 10px;
+    padding-bottom: 130px;
+  }
 
-/* ------------------------- Movie Page --------------------------------- */
-#moviePage {
+  img#imageMovie {
+    width: 100%;
+    max-height: 500px;
+    max-width: fit-content;
+  }
+  div#mainPage {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh;
+    overflow: auto;
+  }
+  div#credits {
+    margin: 10px 28px;
+    margin-bottom: 25px;
+  }
+  #moviePage {
     position: fixed;
     top: 0px;
     background-color: black;
@@ -142,80 +187,147 @@ img.sbaHeder {
     height: 100%;
     padding: 30px 28px;
     overflow: hidden;
-}
-
-.titlepages {
-    font-size: 25;
-}
-
-.nomarginB {
-    font-size: 30;
-    margin-bottom: 0;
-    text-align: right;
-}
-
-#screenGroupSpace {
+  }
+  #screenGroupSpace {
     font-size: 30px;
     margin-top: 0px;
-}
-
-
-#movieTitle {
-    font-size: 48;
-    color: #C300D6;
-    line-height: 1;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-#type {
-    font-size: 30;
-    margin-top: 0;
-}
-
-#screeningRoom {
-    font-size: 50;
-
-}
-
-#moviePage {
-    display: grid;
-}
-
-#movieInfo {
+  }
+  div#screenGroup {
+    font-size: 19px;
+  }
+  #movieInfo {
     overflow: hidden;
     grid-column-start: 1;
     grid-row-start: 1;
     grid-row-end: 4;
     margin-top: 65px;
-}
+  }
 
-#screeningInfo {
+  #screeningInfo {
     grid-column-start: 2;
     grid-row-start: 2;
     grid-row-end: 3;
+  }
+  .titlepages {
+    font-size: 25;
+  }
+
+  .nomarginB {
+    font-size: 30;
+    margin-bottom: 0;
+    text-align: right;
+  }
+
+  #movieTitle {
+    font-size: 48;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  #type {
+    font-size: 30;
+    margin-top: 0;
+  }
+
+  #screeningRoom {
+    font-size: 50;
+  }
+  img#imageMovie2 {
+    height: 200px;
+  }
+}
+/* ------------------------- General ------------------------- */
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+body {
+  /* cursor: none; */
+  overflow: hidden;
+  font-family: "Abraham";
+  letter-spacing: 0;
+  font-weight: normal;
+  background-color: black;
+  color: white;
+  text-align: right;
+  direction: rtl;
+}
+
+div#leftSide {
+  justify-content: center;
+  align-content: space-around;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  width: calc(50% - 100px);
+  padding: 50px;
+  height: calc(100% - 100px);
+  display: flex;
+}
+
+#mainPage::-webkit-scrollbar {
+  display: none;
+}
+
+.movie {
+  padding-right: 20px;
+}
+
+.movie.selected {
+  color: black;
+  background-color: #ff00f7;
+}
+
+.movie {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.nomarginB {
+  font-size: 30;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+#movieTitle {
+  color: #c300d6;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#moviePage {
+  display: grid;
 }
 
 #screenGroupTitle {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .movieScreenTime {
-    margin-top: 6px;
+  margin-top: 6px;
 }
 
 .movieScreenTime.selected {
-    font-weight: bold;
-    color: #C300D6;
+  font-weight: bold;
+  color: #c300d6;
 }
 
 .movieScreenTime .time {
-    width: 110px;
-    margin-left: 15px;
-    display: inline-block;
-    text-align: center;
-}
-
-div#screenGroup {
-    font-size: 19px;
+  width: 110px;
+  margin-left: 15px;
+  display: inline-block;
+  text-align: center;
 }
