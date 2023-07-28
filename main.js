@@ -8,6 +8,7 @@ const autoCloseMoviePage = true;
 const autoEnterTime = 2000; //miliseconds
 const autoCloseTime = 2000; //miliseconds
 const timeBeforeMarkerAnimation = 1000; //miliseconds
+const SPECIAL_SCROLL = true;
 //-------------------------------------
 
 var dataJson = CSVJSON.csv2json(DATA);
@@ -43,60 +44,62 @@ document.addEventListener("DOMContentLoaded", function () {
   scrollToSelection();
   updateImage();
 
-  //Wheel control
-  window.addEventListener("wheel", (event) => {
-    const delta = Math.sign(event.deltaY);
-    if (delta == 1) {
-      //scroll Down
-      increaseScrollIndex();
-    } else if (delta == -1) {
-      //scroll Up
-      decreaseScrollIndex();
-    }
-    scrollToSelection();
-    updateImage();
-  });
-
-  //Mobile control TODO
-  window.addEventListener("touchstart", touchStart, false);
-
-  var start = { x: 0, y: 0 };
-
-  function touchStart(event) {
-    start.x = event.touches[0].pageX;
-    start.y = event.touches[0].pageY;
-  }
-
-  function touchMove(event) {
-    offset = {};
-
-    offset.x = start.x - event.touches[0].pageX;
-    offset.y = start.y - event.touches[0].pageY;
-
-    return offset;
-  }
-  window.addEventListener("touchmove", (event) => {
-    const delta = touchMove(event);
-    console.log("touchmove", delta.y ,delta.y%20 )
-    if (delta.y > 0 && delta.y % 20 >16) {
-      //scroll Down
-      increaseScrollIndex();
-    } else if (delta.y < 0 && delta.y % 20 < -16) {
-      //scroll Up
-      decreaseScrollIndex();
-    }
-    scrollToSelection();
-    updateImage();
-  });
-
-  //Scroll to selection event
-  mainContainer.addEventListener(
-    "scroll",
-    function (e) {
+  if (SPECIAL_SCROLL) {
+    //Wheel control
+    window.addEventListener("wheel", (event) => {
+      const delta = Math.sign(event.deltaY);
+      if (delta == 1) {
+        //scroll Down
+        increaseScrollIndex();
+      } else if (delta == -1) {
+        //scroll Up
+        decreaseScrollIndex();
+      }
       scrollToSelection();
-    },
-    false
-  );
+      updateImage();
+    });
+
+    //Mobile control TODO
+    window.addEventListener("touchstart", touchStart, false);
+
+    var start = { x: 0, y: 0 };
+
+    function touchStart(event) {
+      start.x = event.touches[0].pageX;
+      start.y = event.touches[0].pageY;
+    }
+
+    function touchMove(event) {
+      offset = {};
+
+      offset.x = start.x - event.touches[0].pageX;
+      offset.y = start.y - event.touches[0].pageY;
+
+      return offset;
+    }
+    window.addEventListener("touchmove", (event) => {
+      const delta = touchMove(event);
+      console.log("touchmove", delta.y, delta.y % 20);
+      if (delta.y > 0 && delta.y % 20 > 16) {
+        //scroll Down
+        increaseScrollIndex();
+      } else if (delta.y < 0 && delta.y % 20 < -16) {
+        //scroll Up
+        decreaseScrollIndex();
+      }
+      scrollToSelection();
+      updateImage();
+    });
+
+    //Scroll to selection event
+    mainContainer.addEventListener(
+      "scroll",
+      function (e) {
+        scrollToSelection();
+      },
+      false
+    );
+  }
 
   //Keyboard control
   window.addEventListener("keydown", (event) => {
