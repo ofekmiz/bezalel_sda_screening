@@ -51,6 +51,10 @@
   div#rightSide {
     padding: 800px 10px;
     padding-bottom: 500px;
+    pointer-events: none;
+  }
+  div#rightSide > *{
+    pointer-events: none;
   }
   img#imageMovie {
     width: 100%;
