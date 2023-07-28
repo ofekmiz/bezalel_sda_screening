@@ -79,11 +79,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     window.addEventListener("touchmove", (event) => {
       const delta = touchMove(event);
-      console.log("touchmove", delta.y, delta.y % 10);
-      if (delta.y > 0 && delta.y % 20 > 5) {
+      console.log("touchmove", delta.y);
+      if (delta.y > 0) {
         //scroll Down
         increaseScrollIndex();
-      } else if (delta.y < 0 && delta.y % 20 < -5) {
+      } else if (delta.y < 0) {
         //scroll Up
         decreaseScrollIndex();
       }
