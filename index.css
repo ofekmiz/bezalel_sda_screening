@@ -39,7 +39,7 @@
 }
 
 /* ------------------------- MOBILE ------------------------- */
-@media all and (orientation:portrait) {
+@media all and (orientation: portrait) {
   img.sbaHeder {
     position: fixed;
     top: 0px;
@@ -49,13 +49,10 @@
     padding: 15px 25px;
   }
   div#rightSide {
-    padding: 800px 10px;
-    padding-bottom: 500px;
-    pointer-events: none;
+    padding: 100px 10px;
+    padding-bottom: 200px;
   }
-  div#rightSide > *{
-    pointer-events: none;
-  }
+
   img#imageMovie {
     width: 100%;
     height: auto;
@@ -65,8 +62,9 @@
     right: 0;
     background: black;
   }
-  div#movieInfo > p , div#movieInfo > h1{
-    background-color:#00000060;
+  div#movieInfo > p,
+  div#movieInfo > h1 {
+    background-color: #00000060;
     padding-right: 10px;
     zoom: 1.2;
   }
@@ -120,7 +118,7 @@
     grid-column-start: 1;
     grid-row-start: 2;
     grid-row-end: 3;
-    zoom: 1.5;
+    zoom: 2;
   }
   .titlepages {
     font-size: 25px;
@@ -158,7 +156,7 @@
   }
 }
 /* ------------------------- Desktop ------------------------- */
-@media all and (orientation:landscape) {
+@media all and (orientation: landscape) {
   img.sbaHeder {
     position: fixed;
     top: 0px;
@@ -169,8 +167,8 @@
     padding-left: 100%;
   }
   div#rightSide {
-    padding: 800px 10px;
-    padding-bottom: 130px;
+    padding: 100px 10px;
+    padding-bottom: 200px;
   }
 
   img#imageMovie {
@@ -291,17 +289,17 @@ div#leftSide {
 }
 
 .movie {
+  font-size: 18px;
+  margin-top: 15px;
   padding-right: 20px;
+}
+.movie * {
+  pointer-events: none;
 }
 
 .movie.selected {
   color: black;
   background-color: #ff00f7;
-}
-
-.movie {
-  font-size: 18px;
-  margin-top: 15px;
 }
 
 .nomarginB {
@@ -339,4 +337,8 @@ div#leftSide {
   margin-left: 15px;
   display: inline-block;
   text-align: center;
+}
+
+.noCursor {
+  cursor: none;
 }

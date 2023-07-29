@@ -3,12 +3,12 @@
 const DOWN_KEYS = ["ArrowDown", "s", "Decimal"];
 const UP_KEYS = ["ArrowUp", "w", "3"];
 const ENTER_KEYS = ["Enter", " "];
-const autoEnterMoviePage = true;
-const autoCloseMoviePage = true;
-const autoEnterTime = 2000; //miliseconds
-const autoCloseTime = 2000; //miliseconds
-const timeBeforeMarkerAnimation = 1000; //miliseconds
-const SPECIAL_SCROLL = true;
+const HIDE_MOUSE_TIMEOUT = 3000;
+let disable_mouse = false;
+let mouseTimeout = setTimeout(() => {
+  disable_mouse = true;
+  document.body.classList.add("noCursor");
+}, HIDE_MOUSE_TIMEOUT);
 //-------------------------------------
 
 var dataJson = CSVJSON.csv2json(DATA);
@@ -19,6 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
   var mainContainer = document.getElementById("mainPage");
   var moviePage = document.getElementById("moviePage");
   var scrollIndex = 0;
+
+  //Hide mouse if doesn't move
+  document.addEventListener("mousemove", (e) => {
+    hideMouseTimer();
+  });
+  document.addEventListener("click", (e) => {
+    hideMouseTimer();
+  });
 
   //hide moviePage
   moviePage.style.display = "none";
@@ -44,63 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
   scrollToSelection();
   updateImage();
 
-  if (SPECIAL_SCROLL) {
-    //Wheel control
-    window.addEventListener("wheel", (event) => {
-      const delta = Math.sign(event.deltaY);
-      if (delta == 1) {
-        //scroll Down
-        increaseScrollIndex();
-      } else if (delta == -1) {
-        //scroll Up
-        decreaseScrollIndex();
-      }
-      scrollToSelection();
-      updateImage();
-    });
-
-    //Mobile control TODO
-    window.addEventListener("touchstart", touchStart, false);
-
-    var start = { x: 0, y: 0 };
-
-    function touchStart(event) {
-      start.x = event.touches[0].pageX;
-      start.y = event.touches[0].pageY;
-    }
-
-    function touchMove(event) {
-      offset = {};
-
-      offset.x = start.x - event.touches[0].pageX;
-      offset.y = start.y - event.touches[0].pageY;
-
-      return offset;
-    }
-    window.addEventListener("touchmove", (event) => {
-      const delta = touchMove(event);
-      console.log("touchmove", delta.y);
-      if (delta.y > 0) {
-        //scroll Down
-        increaseScrollIndex();
-      } else if (delta.y < 0) {
-        //scroll Up
-        decreaseScrollIndex();
-      }
-      scrollToSelection();
-      updateImage();
-    });
-
-    //Scroll to selection event
-    mainContainer.addEventListener(
-      "scroll",
-      function (e) {
-        scrollToSelection();
-      },
-      false
-    );
-  }
-
   //Keyboard control
   window.addEventListener("keydown", (event) => {
     if (UP_KEYS.includes(event.key)) {
@@ -118,9 +69,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  function hideMouseTimer() {
+    clearTimeout(mouseTimeout);
+    disable_mouse = false;
+    document.body.classList.remove("noCursor");
+    mouseTimeout = setTimeout(() => {
+      disable_mouse = true;
+      document.body.classList.add("noCursor");
+    }, HIDE_MOUSE_TIMEOUT);
+  }
+
   function scrollToSelection() {
     var oldSelected = document.querySelector(".movie.selected");
-    oldSelected.classList.remove("selected");
+    if (oldSelected) oldSelected.classList.remove("selected");
     var selected = document.querySelector(
       `#movieList .movie[data-number="${scrollIndex}"]`
     );
@@ -133,6 +94,16 @@ document.addEventListener("DOMContentLoaded", function () {
       selected.scrollIntoView(true);
       mainContainer.scrollBy(0, threshold - 130);
     }
+  }
+
+  function selectIndex(index) {
+    scrollIndex = index;
+    var oldSelected = document.querySelector(".movie.selected");
+    oldSelected.classList.remove("selected");
+    var selected = document.querySelector(
+      `#movieList .movie[data-number="${scrollIndex}"]`
+    );
+    selected.classList.add("selected");
   }
 
   function updateImage() {
@@ -153,7 +124,32 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   //Click selected
-  document.body.addEventListener("click", toggleMoviePage, true);
+  document
+    .querySelector("#moviePage")
+    .addEventListener("click", toggleMoviePage, true);
+  document.querySelectorAll(".movie").forEach((clickable) => {
+    clickable.addEventListener(
+      "click",
+      (e) => {
+        if (e.target.classList.contains("selected")) toggleMoviePage();
+      },
+      true
+    );
+  });
+
+  //Select on hover
+  document.querySelectorAll(".movie").forEach((clickable) => {
+    clickable.addEventListener(
+      "mouseover",
+      (e) => {
+        index = e.target.getAttribute("data-number");
+        if (!disable_mouse) {
+          selectIndex(index);
+        }
+      },
+      true
+    );
+  });
 
   var moviePageClosed = true;
   function toggleMoviePage() {
@@ -164,6 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       moviePage.style.display = "none";
       moviePageClosed = true;
+      scrollToSelection();
     }
   }
 
@@ -192,7 +189,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //screening group
     var screenGroup = getOrderedScreeningGroup(dataJson[scrollIndex].group);
-    console.log("screenGroup", screenGroup);
     for (const movie of screenGroup) {
       var startTimes = movie.startTime.join("&nbsp;|&nbsp;");
       var movieObj = document.createElement("div");
