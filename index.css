@@ -68,6 +68,7 @@
     padding-right: 10px;
     zoom: 1.2;
   }
+
   div#mainPage {
     display: grid;
     grid-template-columns: 100%;
@@ -153,6 +154,9 @@
     top: 0;
     left: 0;
     z-index: -1;
+  }
+  #moviePage:after{
+    font-size: 35px;
   }
 }
 /* ------------------------- Desktop ------------------------- */
@@ -282,6 +286,7 @@ div#leftSide {
   padding: 50px;
   height: calc(100% - 100px);
   display: flex;
+  flex-direction: column;
 }
 
 #mainPage::-webkit-scrollbar {
@@ -341,4 +346,32 @@ div#leftSide {
 
 .noCursor {
   cursor: none;
+}
+
+.movie.selected:after {
+  content: ">";
+  float: left;
+  padding: 0px 10px;
+  font-size: 19px;
+}
+
+#moviePage:after {
+  content: "< חזרה לתפריט ";
+  left: 0;
+  margin: 27px;
+  font-weight: bold;
+  display: flex;
+  position: fixed;
+  bottom: 25px;
+}
+
+div#quickInfo{
+  width: 100%;
+  line-height: 0.5;
+  background: black;
+}
+
+span#quickInfoReadMore {
+  display: inline-flex;
+  float: left;
 }

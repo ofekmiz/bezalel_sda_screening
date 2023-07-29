@@ -111,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var imageMovie = document.getElementById("imageMovie");
     var imageName = dataJson[scrollIndex].imageName;
     imageMovie.setAttribute("src", "resources/images/" + imageName);
+    updateQuickInfo();
   }
 
   function increaseScrollIndex() {
@@ -128,6 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
     //Touch selected
     document
       .querySelector("#moviePage")
+      .addEventListener("click", toggleMoviePage, true);
+    document
+      .querySelector("#quickInfo")
       .addEventListener("click", toggleMoviePage, true);
     document.querySelectorAll(".movie").forEach((clickable) => {
       clickable.addEventListener(
@@ -149,6 +153,9 @@ document.addEventListener("DOMContentLoaded", function () {
     //Click selected
     document
       .querySelector("#moviePage")
+      .addEventListener("click", toggleMoviePage, true);
+    document
+      .querySelector("#quickInfo")
       .addEventListener("click", toggleMoviePage, true);
     document.querySelectorAll(".movie").forEach((clickable) => {
       clickable.addEventListener(
@@ -186,6 +193,14 @@ document.addEventListener("DOMContentLoaded", function () {
       moviePageClosed = true;
       scrollToSelection();
     }
+  }
+
+  function updateQuickInfo() {
+    var movieScreeningRoom = document.getElementById("quickInfoRoom");
+    var screenGroupTitle = document.getElementById("quickInfoGroup");
+    movieScreeningRoom.innerHTML = dataJson[scrollIndex].screenRoom;
+    screenGroupTitle.innerHTML =
+      dataJson[scrollIndex].group + "&nbsp;&nbsp;&nbsp; <u>הצג עוד</u>";
   }
 
   function updateMoviePage() {
