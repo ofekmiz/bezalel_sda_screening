@@ -50,17 +50,26 @@
   }
   div#rightSide {
     padding: 100px 10px;
-    padding-bottom: 200px;
+    padding-bottom: 300px;
   }
 
-  img#imageMovie {
-    width: 100%;
-    height: auto;
+  #leftSide {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
     max-height: 30%;
     position: fixed;
     bottom: 10;
     right: 0;
     background: black;
+  }
+  div#quickInfo{
+    zoom: 3;
+    padding-right: 10px;
+  }
+  #imageMovie{
+    width: 100%;
   }
   div#movieInfo > p,
   div#movieInfo > h1 {
@@ -369,9 +378,5 @@ div#quickInfo{
   width: 100%;
   line-height: 0.5;
   background: black;
-}
-
-span#quickInfoReadMore {
-  display: inline-flex;
-  float: left;
+  color: #c300d6;
 }
