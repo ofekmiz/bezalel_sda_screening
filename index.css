@@ -75,7 +75,7 @@
   div#movieInfo > h1 {
     background-color: #00000060;
     padding-right: 10px;
-    zoom: 1.2;
+    zoom: 1.5;
   }
 
   div#mainPage {
@@ -105,7 +105,7 @@
     height: 100%;
     padding: 65px 0px;
     overflow: hidden;
-    grid-template-rows: 40% auto;
+    grid-template-rows: 30% auto;
   }
   #screenGroupSpace,
   #screenGroupTitle {
@@ -160,7 +160,10 @@
   }
   img#imageMovie2 {
     width: 100%;
+    position: absolute;
     z-index: -1;
+    top: 0;
+    opacity: 0.8;
   }
   #moviePage:after{
     font-size: 35px;
