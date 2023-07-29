@@ -50,13 +50,13 @@
   }
   div#rightSide {
     padding: 100px 10px;
-    padding-bottom: 300px;
+    padding-bottom: 800px;
   }
 
   #leftSide {
     width: 100% !important;
     height: auto !important;
-    padding: 0 0 50px 0 !important;
+    padding: 0 0 150px 0 !important;
     margin: 0 !important;
     max-height: 30%;
     position: fixed;
@@ -66,7 +66,7 @@
   }
   div#quickInfo{
     zoom: 3;
-    padding-right: 10px;
+    padding-right: 20px;
   }
   #imageMovie{
     width: 100%;
@@ -105,7 +105,7 @@
     height: 100%;
     padding: 65px 0px;
     overflow: hidden;
-    grid-template-rows: 25% auto;
+    grid-template-rows: 40% auto;
   }
   #screenGroupSpace,
   #screenGroupTitle {
@@ -160,9 +160,6 @@
   }
   img#imageMovie2 {
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     z-index: -1;
   }
   #moviePage:after{
