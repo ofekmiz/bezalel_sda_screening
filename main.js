@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var screenGroupTitle = document.getElementById("quickInfoGroup");
     movieScreeningRoom.innerHTML = dataJson[scrollIndex].screenRoom;
     screenGroupTitle.innerHTML =
-      dataJson[scrollIndex].group + "&nbsp;&nbsp;&nbsp; <u>הצג עוד</u>";
+      "באודיטוריום "+dataJson[scrollIndex].group + "&nbsp;&nbsp;&nbsp; <u>הצג עוד</u>";
   }
 
   function updateMoviePage() {
