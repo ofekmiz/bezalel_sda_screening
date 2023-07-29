@@ -123,36 +123,57 @@ document.addEventListener("DOMContentLoaded", function () {
   function decreaseScrollIndex() {
     scrollIndex = scrollIndex <= 0 ? 0 : scrollIndex - 1;
   }
+  if (isTouchDevice()) {
+    console.log("is touch screen");
+    //Touch selected
+    document
+      .querySelector("#moviePage")
+      .addEventListener("click", toggleMoviePage, true);
+    document.querySelectorAll(".movie").forEach((clickable) => {
+      clickable.addEventListener(
+        "click",
+        (e) => {
+          if (e.target.classList.contains("selected")) {
+            toggleMoviePage();
+          } else {
+            index = e.target.getAttribute("data-number");
+            if (!disable_mouse) {
+              selectIndex(index);
+            }
+          }
+        },
+        true
+      );
+    });
+  } else {
+    //Click selected
+    document
+      .querySelector("#moviePage")
+      .addEventListener("click", toggleMoviePage, true);
+    document.querySelectorAll(".movie").forEach((clickable) => {
+      clickable.addEventListener(
+        "click",
+        (e) => {
+          if (e.target.classList.contains("selected")) toggleMoviePage();
+        },
+        true
+      );
+    });
 
-  //Click selected
-  document
-    .querySelector("#moviePage")
-    .addEventListener("click", toggleMoviePage, true);
-  document.querySelectorAll(".movie").forEach((clickable) => {
-    clickable.addEventListener(
-      "click",
-      (e) => {
-        if (e.target.classList.contains("selected")) toggleMoviePage();
-      },
-      true
-    );
-  });
-
-  //Select on hover
-  document.querySelectorAll(".movie").forEach((clickable) => {
-    clickable.addEventListener(
-      "mouseover",
-      (e) => {
-        index = e.target.getAttribute("data-number");
-        if (!disable_mouse) {
-          selectIndex(index);
-          e.preventDefault();
-          e.stopPropagation ();
-        }
-      },
-      true
-    );
-  });
+    //Select on hover
+    document.querySelectorAll(".movie").forEach((clickable) => {
+      clickable.addEventListener(
+        "mouseover",
+        (e) => {
+          index = e.target.getAttribute("data-number");
+          if (!disable_mouse) {
+            selectIndex(index);
+          }
+        },
+        true
+      );
+    });
+  }
 
   var moviePageClosed = true;
   function toggleMoviePage() {
@@ -289,3 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return num;
   }
 });
+
+function isTouchDevice() {
+  return window.ontouchstart !== undefined;
+}
