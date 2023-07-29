@@ -125,18 +125,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   //Click selected
-  document
-    .querySelector("#moviePage")
-    .addEventListener("click", toggleMoviePage, true);
-  document.querySelectorAll(".movie").forEach((clickable) => {
-    clickable.addEventListener(
-      "click",
-      (e) => {
-        if (e.target.classList.contains("selected")) toggleMoviePage();
-      },
-      true
-    );
-  });
+  // document
+  //   .querySelector("#moviePage")
+  //   .addEventListener("click", toggleMoviePage, true);
+  // document.querySelectorAll(".movie").forEach((clickable) => {
+  //   clickable.addEventListener(
+  //     "click",
+  //     (e) => {
+  //       if (e.target.classList.contains("selected")) toggleMoviePage();
+  //     },
+  //     true
+  //   );
+  // });
 
   //Select on hover
   document.querySelectorAll(".movie").forEach((clickable) => {
