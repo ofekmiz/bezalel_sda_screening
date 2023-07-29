@@ -132,9 +132,9 @@ document.addEventListener("DOMContentLoaded", function () {
     clickable.addEventListener(
       "mousedown",
       (e) => {
-        // if (e.target.classList.contains("selected")) toggleMoviePage();
+        if (e.target.classList.contains("selected")) toggleMoviePage();
       },
-      false
+      true
     );
   });
 
