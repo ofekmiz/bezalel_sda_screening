@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clickable.addEventListener(
       "mousedown",
       (e) => {
-        if (e.target.classList.contains("selected")) toggleMoviePage();
+        // if (e.target.classList.contains("selected")) toggleMoviePage();
       },
       false
     );
@@ -147,9 +147,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!disable_mouse) {
           selectIndex(index);
           e.preventDefault();
+          e.stopPropagation ();
         }
       },
-      false
+      true
     );
   });
 
