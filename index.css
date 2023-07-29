@@ -167,6 +167,7 @@
   }
   #moviePage:after{
     font-size: 35px;
+    bottom: 100px !important;
   }
 }
 /* ------------------------- Desktop ------------------------- */
