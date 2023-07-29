@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
       `#movieList .movie[data-number="${scrollIndex}"]`
     );
     selected.classList.add("selected");
+    updateImage()
   }
 
   function updateImage() {
