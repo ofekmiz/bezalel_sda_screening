@@ -166,7 +166,7 @@
     opacity: 0.8;
   }
   #moviePage:after{
-    font-size: 35px;
+    font-size: 35px; 
     bottom: 100px !important;
   }
 }
