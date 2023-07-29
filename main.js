@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         index = e.target.getAttribute("data-number");
         if (!disable_mouse) {
           selectIndex(index);
+          e.preventDefault();
         }
       },
       false
