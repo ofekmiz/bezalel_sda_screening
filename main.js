@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", toggleMoviePage, true);
   document.querySelectorAll(".movie").forEach((clickable) => {
     clickable.addEventListener(
-      "mousedown",
+      "click",
       (e) => {
         if (e.target.classList.contains("selected")) toggleMoviePage();
       },
