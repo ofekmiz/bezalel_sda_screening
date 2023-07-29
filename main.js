@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
       (e) => {
         if (e.target.classList.contains("selected")) toggleMoviePage();
       },
-      true
+      false
     );
   });
 
@@ -146,10 +146,9 @@ document.addEventListener("DOMContentLoaded", function () {
         index = e.target.getAttribute("data-number");
         if (!disable_mouse) {
           selectIndex(index);
-          e.stopPropagation();
         }
       },
-      true
+      false
     );
   });
 
