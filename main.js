@@ -3,8 +3,11 @@
 const DOWN_KEYS = ["ArrowDown", "s", "Decimal"];
 const UP_KEYS = ["ArrowUp", "w", "3"];
 const ENTER_KEYS = ["Enter", " "];
-const HIDE_MOUSE_TIMEOUT = 3000;
+const HIDE_MOUSE_TIMEOUT = 5000;
+const AUTO_SCROLL_TIMEOUT = 5000;
+const AUTO_SCROLL = true;
 let disable_mouse = false;
+let autoScrollTimeout;
 let mouseTimeout = setTimeout(() => {
   disable_mouse = true;
   document.body.classList.add("noCursor");
@@ -27,6 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", (e) => {
     hideMouseTimer();
   });
+
+  setInterval(autoScroll, AUTO_SCROLL_TIMEOUT);
 
   //hide moviePage
   moviePage.style.display = "none";
@@ -58,11 +63,13 @@ document.addEventListener("DOMContentLoaded", function () {
       decreaseScrollIndex();
       scrollToSelection();
       updateImage();
+      hideMouseTimer()
     }
     if (DOWN_KEYS.includes(event.key)) {
       increaseScrollIndex();
       scrollToSelection();
       updateImage();
+      hideMouseTimer()
     }
     if (ENTER_KEYS.includes(event.key)) {
       toggleMoviePage();
@@ -200,10 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var screenGroupTitle = document.getElementById("quickInfoGroup");
     movieScreeningRoom.innerHTML = dataJson[scrollIndex].screenRoom;
     if (dataJson[scrollIndex].group) {
-      screenGroupTitle.innerHTML =
-        "באודיטוריום " +
-        dataJson[scrollIndex].group +
-        "&nbsp;&nbsp;&nbsp; <u>הצג עוד</u>";
+      screenGroupTitle.innerHTML = "באודיטוריום " + dataJson[scrollIndex].group;
     } else {
       screenGroupTitle.innerHTML = "";
     }
@@ -329,6 +333,18 @@ document.addEventListener("DOMContentLoaded", function () {
       num = "0" + num.toString();
     }
     return num;
+  }
+
+  function autoScroll() {
+    if (!isTouchDevice() && AUTO_SCROLL && disable_mouse) {
+      if (scrollIndex < dataJson.length - 1) {
+        increaseScrollIndex();
+      } else {
+        scrollIndex = 0;
+      }
+      scrollToSelection();
+      updateImage();
+    }
   }
 });
 
