@@ -49,14 +49,14 @@
     padding: 15px 25px;
   }
   div#rightSide {
-    padding: 100px 10px;
-    padding-bottom: 800px;
+    padding: 10px 10px;
+    padding-bottom: 100px;
   }
 
   #leftSide {
     width: 100% !important;
     height: auto !important;
-    padding: 0 0 150px 0 !important;
+    padding: 0 0 50px 0 !important;
     margin: 0 !important;
     max-height: 30%;
     position: fixed;
@@ -64,10 +64,10 @@
     right: 0;
     background: black;
   }
-  div#quickInfo{
+  div#quickInfo {
     padding-right: 20px;
   }
-  #imageMovie{
+  #imageMovie {
     width: 100%;
   }
   div#movieInfo > p,
@@ -80,7 +80,7 @@
     display: grid;
     grid-template-columns: 100%;
     margin-top: 65px;
-    height: calc(100vh - 500px);
+    height: calc(100vh - 450px);
     overflow: auto;
   }
   div#credits {
@@ -89,7 +89,6 @@
     position: fixed;
     bottom: 0;
     background-color: black;
-    font-size: 19px;
     width: 100%;
     right: 0;
   }
@@ -106,18 +105,13 @@
   }
   #screenGroupSpace,
   #screenGroupTitle {
-    font-size: 30px;
     margin: 10px 10px;
-  }
-  div#screenGroup {
-    font-size: 19px;
   }
   #movieInfo {
     overflow: hidden;
     grid-column-start: 1;
     grid-row-start: 1;
     grid-row-end: 1;
-    margin-top: 65px;
     position: relative;
     padding-top: 30px;
   }
@@ -127,25 +121,19 @@
     grid-row-start: 2;
     grid-row-end: 3;
   }
-  .titlepages {
-    font-size: 25px;
-  }
 
   .nomarginB {
-    font-size: 30;
     margin-bottom: 0;
     text-align: right;
   }
 
   #movieTitle {
-    font-size: 48px;
     line-height: 1;
     margin-top: 0;
     margin-bottom: 0;
   }
 
   #type {
-    font-size: 30;
     margin: 0;
   }
 
@@ -161,9 +149,17 @@
     top: 0;
     opacity: 0.8;
   }
-  #moviePage:after{
-    font-size: 35px; 
+  #moviePage:after {
     bottom: 100px !important;
+  }
+  #screeningRoom {
+    font-size: 25;
+  }
+  #type {
+    font-size: 19;
+  }
+  #movieTitle {
+    font-size: 32;
   }
 }
 /* ------------------------- Desktop ------------------------- */
@@ -207,27 +203,20 @@
     overflow: hidden;
   }
   #screenGroupSpace {
-    font-size: 30px;
     margin-top: 0px;
   }
-  div#screenGroup {
-    font-size: 19px;
-  }
+
   #movieInfo {
     overflow: hidden;
     grid-column-start: 1;
     grid-row-start: 1;
     grid-row-end: 4;
-    margin-top: 65px;
   }
 
   #screeningInfo {
     grid-column-start: 2;
     grid-row-start: 2;
     grid-row-end: 3;
-  }
-  .titlepages {
-    font-size: 25;
   }
 
   .nomarginB {
@@ -237,25 +226,39 @@
   }
 
   #movieTitle {
-    font-size: 48;
     line-height: 1;
     margin-top: 0;
     margin-bottom: 0;
   }
 
   #type {
-    font-size: 30;
     margin-top: 0;
   }
 
-  #screeningRoom {
-    font-size: 50;
-  }
   img#imageMovie2 {
     height: 200px;
   }
+  #screeningRoom {
+    font-size: 50;
+  }
+  #type {
+    font-size: 30;
+  }
+  #movieTitle {
+    font-size: 48;
+  }
 }
 /* ------------------------- General ------------------------- */
+.titlepages {
+  font-size: 25;
+}
+div#screenGroup {
+  font-size: 19px;
+}
+#screenGroupSpace {
+  font-size: 30px;
+}
+
 .noselect {
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -322,6 +325,7 @@ div#leftSide {
 
 #movieTitle {
   color: #c300d6;
+  text-shadow: #000 0px 2px 2px;
   line-height: 1;
   margin-top: 0;
   margin-bottom: 0;
@@ -365,7 +369,7 @@ div#leftSide {
   bottom: 25px;
 }
 
-div#quickInfo{
+div#quickInfo {
   width: 100%;
   line-height: 0.5;
   background: black;
