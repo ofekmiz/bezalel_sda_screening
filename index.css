@@ -72,7 +72,7 @@
   }
   div#movieInfo > p,
   div#movieInfo > h1 {
-    background-color: #00000060;
+    /* background-color: #00000060; */
     padding-right: 10px;
   }
 
@@ -80,7 +80,7 @@
     display: grid;
     grid-template-columns: 100%;
     margin-top: 65px;
-    height: calc(100vh - 450px);
+    height: calc(100vh - 400px);
     overflow: auto;
   }
   div#credits {
@@ -91,6 +91,7 @@
     background-color: black;
     width: 100%;
     right: 0;
+    font-size: 14px;
   }
   #moviePage {
     position: fixed;
@@ -101,7 +102,7 @@
     height: 100%;
     padding: 65px 0px;
     overflow: hidden;
-    grid-template-rows: 30% auto;
+    grid-template-rows: 200px auto;
   }
   #screenGroupSpace,
   #screenGroupTitle {
@@ -137,7 +138,6 @@
   }
 
   #screeningRoom {
-    padding-top: 10px;
     font-size: 50;
     margin: 0;
   }
@@ -146,10 +146,7 @@
     position: absolute;
     z-index: -1;
     top: 0;
-    opacity: 0.8;
-  }
-  #moviePage:after {
-    bottom: 100px !important;
+    opacity: 0.5;
   }
   #screeningRoom {
     font-size: 25;
@@ -159,6 +156,15 @@
   }
   #movieTitle {
     font-size: 32;
+  }
+  #screenGroupSpace {
+    font-size: 25px;
+  }
+  .nomarginB {
+    font-size: 26;
+  }
+  p#quickInfoRoom {
+    font-size: 28px;
   }
 }
 /* ------------------------- Desktop ------------------------- */
@@ -340,6 +346,7 @@ div#leftSide {
 
 .movieScreenTime {
   margin-top: 6px;
+  display: flex;
 }
 
 .movieScreenTime.selected {
@@ -360,12 +367,14 @@ div#leftSide {
 
 #moviePage:after {
   content: "< חזרה לתפריט ";
-  left: 0;
-  margin: 27px;
   font-weight: bold;
-  display: flex;
   position: fixed;
-  bottom: 25px;
+  bottom: 40px;
+  padding: 10px;
+  width: calc(100vw - 20px);
+  background: black;
+  text-align: left;
+  left: 0;
 }
 
 div#quickInfo {
@@ -374,4 +383,18 @@ div#quickInfo {
   background: black;
   color: #c300d6;
   font-size: 20px;
+}
+
+.movie.selected:after {
+  content: "הצג עוד";
+  display: inline-block;
+  float: left;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+.movie {
+  font-size: 18px;
+  margin-top: 15px;
+  padding-right: 20px;
 }

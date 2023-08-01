@@ -199,8 +199,14 @@ document.addEventListener("DOMContentLoaded", function () {
     var movieScreeningRoom = document.getElementById("quickInfoRoom");
     var screenGroupTitle = document.getElementById("quickInfoGroup");
     movieScreeningRoom.innerHTML = dataJson[scrollIndex].screenRoom;
-    screenGroupTitle.innerHTML =
-      "באודיטוריום "+dataJson[scrollIndex].group + "&nbsp;&nbsp;&nbsp; <u>הצג עוד</u>";
+    if (dataJson[scrollIndex].group) {
+      screenGroupTitle.innerHTML =
+        "באודיטוריום " +
+        dataJson[scrollIndex].group +
+        "&nbsp;&nbsp;&nbsp; <u>הצג עוד</u>";
+    } else {
+      screenGroupTitle.innerHTML = "";
+    }
   }
 
   function updateMoviePage() {
