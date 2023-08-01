@@ -8,6 +8,7 @@ const AUTO_SCROLL_TIMEOUT = 5000;
 const AUTO_SCROLL = true;
 let disable_mouse = false;
 let autoScrollTimeout;
+let scrollIndex = 0;
 let mouseTimeout = setTimeout(() => {
   disable_mouse = true;
   document.body.classList.add("noCursor");
@@ -21,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var movieListContainer = document.getElementById("movieList");
   var mainContainer = document.getElementById("mainPage");
   var moviePage = document.getElementById("moviePage");
-  var scrollIndex = 0;
 
   //Hide mouse if doesn't move
   document.addEventListener("mousemove", (e) => {
@@ -63,13 +63,13 @@ document.addEventListener("DOMContentLoaded", function () {
       decreaseScrollIndex();
       scrollToSelection();
       updateImage();
-      hideMouseTimer()
+      hideMouseTimer();
     }
     if (DOWN_KEYS.includes(event.key)) {
       increaseScrollIndex();
       scrollToSelection();
       updateImage();
-      hideMouseTimer()
+      hideMouseTimer();
     }
     if (ENTER_KEYS.includes(event.key)) {
       toggleMoviePage();
@@ -92,26 +92,30 @@ document.addEventListener("DOMContentLoaded", function () {
     var selected = document.querySelector(
       `#movieList .movie[data-number="${scrollIndex}"]`
     );
-    selected.classList.add("selected");
-    var threshold = Math.floor(dataJson.length / 3);
-    if (scrollIndex < threshold) {
-      selected.scrollIntoView(true);
-      mainContainer.scrollBy(0, -120);
-    } else {
-      selected.scrollIntoView(true);
-      mainContainer.scrollBy(0, threshold - 130);
+    if (selected) {
+      selected.classList.add("selected");
+      var threshold = Math.floor(dataJson.length / 3);
+      if (scrollIndex < threshold) {
+        selected.scrollIntoView(true);
+        mainContainer.scrollBy(0, -120);
+      } else {
+        selected.scrollIntoView(true);
+        mainContainer.scrollBy(0, threshold - 130);
+      }
     }
   }
 
   function selectIndex(index) {
-    scrollIndex = index;
+    scrollIndex = parseInt(index);
     var oldSelected = document.querySelector(".movie.selected");
-    oldSelected.classList.remove("selected");
+    if (oldSelected) oldSelected.classList.remove("selected");
     var selected = document.querySelector(
       `#movieList .movie[data-number="${scrollIndex}"]`
     );
-    selected.classList.add("selected");
-    updateImage();
+    if (selected) {
+      selected.classList.add("selected");
+      updateImage();
+    }
   }
 
   function updateImage() {

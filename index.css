@@ -106,7 +106,7 @@
   }
   #screenGroupSpace,
   #screenGroupTitle {
-    margin: 10px 10px;
+    margin: 10px 0px;
   }
   #movieInfo {
     overflow: hidden;
@@ -117,6 +117,7 @@
   }
 
   #screeningInfo {
+    padding: 10px;
     grid-column-start: 1;
     grid-row-start: 2;
     grid-row-end: 3;
@@ -236,6 +237,10 @@
     margin-bottom: 0;
   }
 
+  .movieScreenTime .time {
+    width: 180px;
+  }
+
   #type {
     margin-top: 0;
   }
@@ -297,7 +302,6 @@ body.noCursor {
   cursor: none;
 }
 
-
 div#leftSide {
   justify-content: center;
   align-content: space-around;
@@ -351,8 +355,11 @@ div#leftSide {
 }
 
 .movieScreenTime {
-  margin-top: 6px;
+  margin-bottom: 10px;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .movieScreenTime.selected {
@@ -361,7 +368,6 @@ div#leftSide {
 }
 
 .movieScreenTime .time {
-  width: 110px;
   margin-left: 15px;
   display: inline-block;
   text-align: center;
@@ -400,5 +406,3 @@ div#quickInfo {
   margin-top: 15px;
   padding-right: 20px;
 }
-
-
