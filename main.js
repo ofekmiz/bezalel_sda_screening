@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    //collect movies in group
+    //collect movies in group with start times
     var times = groupName.split("|").slice(0, -1);
     for (const i of indexes) {
       dataJson[i].startTime = times;
@@ -310,8 +310,15 @@ document.addEventListener("DOMContentLoaded", function () {
         startHour = times[j].toString().split(":")[0];
         startMinutes = parseInt(times[j].toString().split(":")[1]);
         movieLenMinutes = parseInt(dataJson[i].length.toString().split(":")[0]);
-        var startTime =
-          startHour + ":" + zeroPadding(startMinutes + movieLenMinutes);
+
+        if (startMinutes + movieLenMinutes >= 60) {
+          startMinutes = 60 - startMinutes + movieLenMinutes;
+          startHour = parseInt(startHour) + 1;
+        } else {
+          startMinutes = startMinutes + movieLenMinutes;
+        }
+
+        var startTime = startHour + ":" + zeroPadding(startMinutes);
         newTimes.push(startTime.replace(/\s/g, "")); // remove spaces
       }
       times = newTimes;
@@ -320,10 +327,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //sort by order
     orderedGroupMovies.sort(function (first, second) {
-      if (first.order > second.order) {
+      if (parseInt(first.order) > parseInt(second.order)) {
         return 1;
       }
-      if (first.order < second.order) {
+      if (parseInt(first.order) < parseInt(second.order)) {
         return -1;
       }
       return 0;
