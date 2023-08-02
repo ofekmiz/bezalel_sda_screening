@@ -260,6 +260,9 @@
   p#quickInfoRoom {
     font-size: 32px;
   }
+  div#movieList{
+    margin-top: 40px; 
+  }
 }
 /* ------------------------- General ------------------------- */
 .titlepages {
