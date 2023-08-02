@@ -5,9 +5,11 @@ const UP_KEYS = ["ArrowUp", "w", "3"];
 const ENTER_KEYS = ["Enter", " "];
 const HIDE_MOUSE_TIMEOUT = 5000;
 const AUTO_SCROLL_TIMEOUT = 5000;
+const BACK_TO_MENU_TIMEOUT = 20000;
 const AUTO_SCROLL = true;
 let disable_mouse = false;
 let autoScrollTimeout;
+let backToMenuTimeout;
 let scrollIndex = 0;
 let mouseTimeout = setTimeout(() => {
   disable_mouse = true;
@@ -97,10 +99,10 @@ document.addEventListener("DOMContentLoaded", function () {
       var threshold = Math.floor(dataJson.length / 3);
       if (scrollIndex < threshold) {
         selected.scrollIntoView(true);
-        mainContainer.scrollBy(0, -120);
+        mainContainer.scrollBy(0, -150);
       } else {
         selected.scrollIntoView(true);
-        mainContainer.scrollBy(0, threshold - 130);
+        mainContainer.scrollBy(0, threshold - 150);
       }
     }
   }
@@ -195,13 +197,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var moviePageClosed = true;
   function toggleMoviePage() {
+    clearTimeout(backToMenuTimeout);
     if (moviePageClosed) {
       updateMoviePage();
       moviePage.style.display = "grid";
       moviePageClosed = false;
+      backToMenuTimeout = setTimeout(() => {
+        toggleMoviePage();
+      }, BACK_TO_MENU_TIMEOUT);
     } else {
       moviePage.style.display = "none";
       moviePageClosed = true;
+      selectIndex(0);
       scrollToSelection();
     }
   }
