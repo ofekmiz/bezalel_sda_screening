@@ -325,6 +325,9 @@ div#leftSide {
 *::-webkit-scrollbar , #mainPage::-webkit-scrollbar {
   display: none;
 }
+div#mainPage {
+  scrollbar-width: none;
+}
 
 .movie {
   font-size: 18px;
