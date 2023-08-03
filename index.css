@@ -53,6 +53,10 @@
     padding-bottom: 100px;
   }
 
+  #movieTitle {
+    color: white !important;
+  }
+
   #leftSide {
     width: 100% !important;
     height: auto !important;
@@ -318,7 +322,7 @@ div#leftSide {
   flex-direction: column;
 }
 
-#mainPage::-webkit-scrollbar {
+*::-webkit-scrollbar , #mainPage::-webkit-scrollbar {
   display: none;
 }
 
