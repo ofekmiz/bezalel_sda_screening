@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
         movieLenMinutes = parseInt(dataJson[i].length.toString().split(":")[0]);
 
         if (startMinutes + movieLenMinutes >= 60) {
-          startMinutes = 60 - startMinutes + movieLenMinutes;
+          startMinutes = movieLenMinutes - (60 - startMinutes);
           startHour = parseInt(startHour) + 1;
         } else {
           startMinutes = startMinutes + movieLenMinutes;
