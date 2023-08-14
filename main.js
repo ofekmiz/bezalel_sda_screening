@@ -19,7 +19,7 @@ let mouseTimeout = setTimeout(() => {
 
 var dataJson = CSVJSON.csv2json(DATA);
 console.log("dataJson", dataJson);
-console.log("15:24")
+console.log("15:24");
 
 document.addEventListener("DOMContentLoaded", function () {
   var movieListContainer = document.getElementById("movieList");
